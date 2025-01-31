@@ -13,7 +13,7 @@ function DiscountBanner() {
 				<h1>
 					Amazing Discounts <br /> on Garden Products!
 				</h1>
-				<button onClick={handleClick}>Check out</button>
+				<button className={s.button} onClick={handleClick}>Check out</button>
 			</div>
 		</div>
 	);
