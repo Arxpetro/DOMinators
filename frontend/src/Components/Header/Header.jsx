@@ -13,7 +13,7 @@ function Header() {
 			<Link to="/" className={s.navLink}>
 				<img src={logo} alt="logo" className={s.logo}/>
 			</Link>
-
+			
 			<nav>
 				<ul className={s.nav}>
 					<li>
