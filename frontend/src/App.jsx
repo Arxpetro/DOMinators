@@ -1,21 +1,24 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Header from "./Components/Header/Header";
-import HomePage from "./Components/HomePage/HomePage";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Footer from "./Components/Footer/Footer";
+import Map from "./Components/Map/Map";
+import Categories from "./Components/Categories/Categories";
 
 function App() {
-	return (
-		<BrowserRouter>
-			<div className="main">
-				<div className="container">
-					<Header />
-					<Routes>
-						<Route path="/" element={<HomePage/>}/>
-					</Routes>
-					{/* Footer */}
-				</div>
-			</div>
-		</BrowserRouter>
-	);
+  return (
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Map />} />
+          <Route path="/categories" element={<Categories />} />
+          
+        </Routes>
+        <Footer />
+        <Categories /> 
+         
+      </div>
+    </Router>
+  );
 }
 
 export default App;
