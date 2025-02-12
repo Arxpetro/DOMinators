@@ -44,30 +44,9 @@
   gap: 20px;
 }
 
-/* Карточка товара */
-.productCard {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
-  text-align: center;
-  background-color: #fff;
-}
-
-.productCard img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-/* Цена со скидкой */
-.price {
+/* Сообщение о пустом списке */
+.noProducts {
   font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.oldPrice {
-  font-size: 1rem;
-  text-decoration: line-through;
-  color: red;
-  margin-left: 10px;
+  color: #777;
+  text-align: center;
 }

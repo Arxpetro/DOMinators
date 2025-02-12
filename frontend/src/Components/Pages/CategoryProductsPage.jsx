@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import ProductCard from "../ProductCard/ProductCard"; 
 import styles from "./CategoryProductsPage.module.css";
 
 const CategoryProductsPage = () => {
@@ -9,13 +10,18 @@ const CategoryProductsPage = () => {
   const [sortType, setSortType] = useState("default");
   const [priceFilter, setPriceFilter] = useState({ min: "", max: "" });
 
-  // Загрузка данных
+  console.log("Категория ID:", id); // Логируем ID категории
+
   useEffect(() => {
     axios
-      .get(`http://localhost:3333/products?categoryId=${id}`)
+      .get(`http://localhost:3333/categories/${id}`)
       .then((response) => {
-        console.log("Загруженные товары:", response.data);
-        setProducts(response.data);
+        console.log("Ответ от API:", response.data);
+        if (response.data && Array.isArray(response.data.products)) {
+          setProducts(response.data.products);
+        } else {
+          console.error("Ошибка: API вернул неверный формат данных:", response.data);
+        }
       })
       .catch((error) => console.error("Ошибка загрузки товаров:", error));
   }, [id]);
@@ -27,20 +33,23 @@ const CategoryProductsPage = () => {
     return product.price >= minPrice && product.price <= maxPrice;
   });
 
-  // Сортировка товаров
+  console.log("Фильтрованные товары:", filteredProducts);
+
+  // ✅ Сортировка товаров
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortType === "price") return a.price - b.price;
     if (sortType === "discount") {
-      const discountA = a.oldPrice ? a.oldPrice - a.price : 0;
-      const discountB = b.oldPrice ? b.oldPrice - b.price : 0;
+      const discountA = (a.oldPrice ?? a.price) - a.price;
+      const discountB = (b.oldPrice ?? b.price) - b.price;
       return discountB - discountA;
     }
     return 0;
   });
 
+  console.log("Отсортированные товары:", sortedProducts);
+
   return (
     <div className={styles.container}>
-      {/* Заголовок */}
       <h2 className={styles.categoryTitle}>Tools and Equipment</h2>
 
       {/* Фильтр и сортировка */}
@@ -60,7 +69,7 @@ const CategoryProductsPage = () => {
             onChange={(e) => setPriceFilter({ ...priceFilter, max: e.target.value })}
           />
 
-          <label>Discounted items</label>
+          <label>Sort by:</label>
           <select onChange={(e) => setSortType(e.target.value)}>
             <option value="default">Default</option>
             <option value="price">Price</option>
@@ -69,18 +78,15 @@ const CategoryProductsPage = () => {
         </div>
       </div>
 
-      {/* Список товаров */}
+      {/* Отображение товаров */}
       <div className={styles.productsList}>
-        {sortedProducts.map((product) => (
-          <div key={product.id} className={styles.productCard}>
-            <img src={`http://localhost:3333${product.image}`} alt={product.name} />
-            <h3>{product.name}</h3>
-            <p className={styles.price}>
-              ${product.price}
-              {product.oldPrice && <span className={styles.oldPrice}>${product.oldPrice}</span>}
-            </p>
-          </div>
-        ))}
+        {sortedProducts.length > 0 ? (
+          sortedProducts.map((product) => (
+            <ProductCard key={product.id} item={product} />
+          ))
+        ) : (
+          <p className={styles.noProducts}>No products found</p>
+        )}
       </div>
     </div>
   );
