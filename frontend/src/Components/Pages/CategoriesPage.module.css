@@ -1,0 +1,120 @@
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Заголовок категории */
+.categoryTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Контейнер для фильтров и сортировки */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filterSort {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.filterSort input {
+  width: 100px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.filterSort select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Сетка товаров (карточек) на странице CategoryProductsPage */
+.productsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.noProducts {
+  font-size: 1.5rem;
+  color: #777;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* ===================== */
+/* -- Стили для самой страницы categories (список категорий) -- */
+.categoriesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* 
+  .categoryCard — это «контейнер» категории, 
+  сделаем его похожим на ProductCard (не трогая ProductCard.module.css).
+*/
+.categoryCard {
+  /* Адаптируем стили, аналогичные .container из ProductCard.module.css */
+  position: relative;
+  width: 100%;
+  max-width: 19.75rem;           /* Аналог max-width у карточки товара */
+  height: 26.375rem;            /* Аналогичная высота, при желании */
+  overflow: hidden;
+  border: 1px solid #DDDDDD;
+  border-radius: 1rem;
+  background-color: #fff;
+
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+
+  /* Допустим, добавим тень при ховере */
+}
+.categoryCard:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Внутри .categoryCard сделаем блок под картинку, по аналогии с .productImg */
+.categoryCardImg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 17.75rem; /* Аналогично .productImg */
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+/* Блок с названием категории, по аналогии с .productInfo */
+.categoryInfo {
+  border-top: 1px solid #DDDDDD;
+  padding: 1rem 2rem;
+  text-align: center; /* Можно так */
+}
+
+.categoryInfo h3 {
+  /* Можете подогнать размер под нужный дизайн */
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #424436;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Можно добавить, чтобы название не переносилось */
+}
