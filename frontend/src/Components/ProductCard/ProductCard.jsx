@@ -21,10 +21,8 @@ function ProductCard({ item }) {
 								((item.price - item.discont_price) / item.price) * 100
 							) +
 							"%"}
-					</div>
-				) : (
-					{}
-				)}
+					</div>  
+				) : null}  {/* раньше был пустой объект {}, теперь null */}
 			</div>
 
 			{/* Нижняя часть карточки с названием и ценой */}
