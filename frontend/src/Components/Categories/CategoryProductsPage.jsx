@@ -9,6 +9,7 @@ const CategoryProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState(null);
 
+  // Фильтры, сортировки и т.д.
   const [sortType, setSortType] = useState("default");
   const [priceFilter, setPriceFilter] = useState({ min: "", max: "" });
 
@@ -16,26 +17,26 @@ const CategoryProductsPage = () => {
     axios
       .get(`http://localhost:3333/categories/${id}`)
       .then((response) => {
-        console.log("ОТВЕТ API (CategoryProductsPage):", response.data);
-        if (response.data && response.data.category && Array.isArray(response.data.data)) {
+        console.log("API ответ (CategoryProductsPage):", response.data);
+        if (response.data?.category && Array.isArray(response.data?.data)) {
           setCategory(response.data.category);
           setProducts(response.data.data);
         } else {
-          console.error("Ошибка: API вернул неверный формат:", response.data);
+          console.error("Некорректный формат:", response.data);
         }
       })
-      .catch((error) => console.error("Ошибка загрузки товаров:", error));
+      .catch((error) => console.error("Ошибка:", error));
   }, [id]);
 
-  // ---- Фильтр по цене ----
-  const filteredProducts = products.filter((product) => {
-    const minPrice = priceFilter.min ? Number(priceFilter.min) : 0;
-    const maxPrice = priceFilter.max ? Number(priceFilter.max) : Infinity;
-    return product.price >= minPrice && product.price <= maxPrice;
+  // Пример фильтра по цене
+  const filtered = products.filter((p) => {
+    const min = priceFilter.min ? Number(priceFilter.min) : 0;
+    const max = priceFilter.max ? Number(priceFilter.max) : Infinity;
+    return p.price >= min && p.price <= max;
   });
 
-  // ---- Сортировка ----
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
+  // Пример сортировки
+  const sorted = [...filtered].sort((a, b) => {
     if (sortType === "price") {
       return a.price - b.price;
     }
@@ -44,29 +45,24 @@ const CategoryProductsPage = () => {
       const discountB = (b.oldPrice ?? b.price) - b.price;
       return discountB - discountA;
     }
-    return 0; // default
+    return 0;
   });
 
   return (
     <div className={styles.container}>
-      {/* Заголовок категории (картинка + title) */}
+      {/* Шапка категории (если нужно) */}
       {category && (
         <div style={{ marginBottom: "20px" }}>
           <img
             src={`http://localhost:3333${category.image}`}
             alt={category.title}
-            style={{
-              width: "100%",
-              maxHeight: 300,
-              objectFit: "cover",
-              borderRadius: "1rem",
-            }}
+            className={styles.categoryBanner}
           />
           <h2 className={styles.categoryTitle}>{category.title}</h2>
         </div>
       )}
 
-      {/* Блок фильтра и сортировки */}
+      {/* Фильтр и сортировка */}
       <div className={styles.controls}>
         <div className={styles.filterSort}>
           <label>Price:</label>
@@ -74,24 +70,17 @@ const CategoryProductsPage = () => {
             type="number"
             placeholder="From"
             value={priceFilter.min}
-            onChange={(e) =>
-              setPriceFilter({ ...priceFilter, min: e.target.value })
-            }
+            onChange={(e) => setPriceFilter({ ...priceFilter, min: e.target.value })}
           />
           <input
             type="number"
             placeholder="To"
             value={priceFilter.max}
-            onChange={(e) =>
-              setPriceFilter({ ...priceFilter, max: e.target.value })
-            }
+            onChange={(e) => setPriceFilter({ ...priceFilter, max: e.target.value })}
           />
 
           <label>Sort by:</label>
-          <select
-            value={sortType}
-            onChange={(e) => setSortType(e.target.value)}
-          >
+          <select value={sortType} onChange={(e) => setSortType(e.target.value)}>
             <option value="default">Default</option>
             <option value="price">Price</option>
             <option value="discount">Discount</option>
@@ -101,15 +90,14 @@ const CategoryProductsPage = () => {
 
       {/* Сетка товаров */}
       <div className={styles.productsList}>
-        {sortedProducts.length > 0 ? (
-          sortedProducts.map((product) => {
+        {sorted.length > 0 ? (
+          sorted.map((product) => {
+            // Передаём в ProductCard нужные поля
             const itemForCard = {
               id: product.id,
               image: product.image,
               title: product.title,
-              // Если есть oldPrice, значит показываем её как «обычную»:
               price: product.oldPrice || product.price,
-              // «Скидочная» цена = product.price (только если есть oldPrice)
               discont_price: product.oldPrice ? product.price : null,
             };
             return <ProductCard key={product.id} item={itemForCard} />;
