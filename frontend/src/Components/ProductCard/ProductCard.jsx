@@ -1,29 +1,31 @@
 import React from "react";
 import s from "./ProductCard.module.css";
 
-function ProductCard({ item }) {
-	// console.log(item);
+function ProductCard({ item: product }) {
+	//console.log("Получен product в ProductCard:", product);
+
+	if (!product || typeof product !== "object") {
+	  return <p>Ошибка загрузки товара</p>;
+	}
 
 	return (
 		<div className={s.container}>
 			{/* Верхняя часть карточки с картинкой */}
 			<div
 				style={{
-					backgroundImage: `url(http://localhost:3333${item.image})`,
+					backgroundImage: `url(http://localhost:3333${product.image})`,
 				}}
 				className={s.productImg}
 			>
 				{/* Оранжевая наклейка со скидкой */}
-				{item.discont_price !== null ? (
+				{product.discont_price !== null && (
 					<div className={s.salePercent}>
 						{"-" +
 							Math.round(
-								((item.price - item.discont_price) / item.price) * 100
+								((product.price - product.discont_price) / product.price) * 100
 							) +
 							"%"}
 					</div>
-				) : (
-					{}
 				)}
 			</div>
 
@@ -41,17 +43,17 @@ function ProductCard({ item }) {
 						marginBottom: "1rem",
 					}}
 				>
-					{item.title}
+					{product.title}
 				</h4>
 
 				{/* Цена. Если есть скидка, отобразит обе цены. Если скидки нет - просто цену */}
 				<div>
-					{item.discont_price === null ? (
-						<span className={s.dprice}>{"$" + item.price}</span>
+					{product.discont_price === null ? (
+						<span className={s.dprice}>{"$" + product.price}</span>
 					) : (
 						<>
-							<span className={s.dprice}>{"$" + item.discont_price}</span>
-							<span className={s.price}>{"$" + item.price}</span>
+							<span className={s.dprice}>{"$" + product.discont_price}</span>
+							<span className={s.price}>{"$" + product.price}</span>
 						</>
 					)}
 				</div>

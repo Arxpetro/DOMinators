@@ -10,7 +10,7 @@ function DiscountBanner() {
 	return (
 		<div className={s.banner}>
 			<div className={s.dark}>
-				<h1>
+				<h1 className={s.h1}>
 					Amazing Discounts <br /> on Garden Products!
 				</h1>
 				<button className={s.button} onClick={handleClick}>Check out</button>
