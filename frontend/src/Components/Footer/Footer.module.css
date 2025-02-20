@@ -1,0 +1,77 @@
+/* Footer.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap');
+
+.footer {
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+    width: 100%; /* Full width */
+    max-width: 1440px; /* Maximum width */
+    height: auto; /* Allow height to adjust based on content */
+    background-color: #FFFFF1; /* Background color */
+    padding: 40px 0; /* Padding above and below */
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+.contact {
+    padding-left: 40px; /* Left padding */
+    font-size: 64px; /* Font size */
+    color: #424436; /* Text color */
+}
+
+.container {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+    grid-template-rows: auto; /* Automatic row height */
+    gap: 32px; /* Space between grid items */
+    margin-top: 40px; /* Margin above */
+    padding: 0 40px; /* Padding on the sides */
+}
+
+.info {
+    background-color: #F2F6D3; /* Background color for info section */
+    padding: 32px; /* Padding inside info section */
+    color:  #424436;
+    ; /* Text color */
+    font-size: 20px; /* Font size */
+    line-height: 1.5; /* Line height */
+    border-radius: 14px; /* Rounded corners */
+    min-width: 300px; /* Minimum width for each info box */
+    height: 150px; /* Fixed height for each info box */
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center content vertically */
+}
+
+.p-footer {
+    font-size: 20px; /* Font size for paragraph */
+}
+
+.h-footer {
+    color: #424436; /* Text color for headings */
+    font-size: 40px; /* Font size for headings */
+    margin-top: 16px; /* Margin above */
+}
+
+.socials {
+    margin-top: 16px; /* Margin above social icons */
+}
+
+.socials a {
+    color: #8B8B8B; /* Grey color for social media icons */
+    transition: color 0.3s; /* Transition effect for color change */
+}
+
+.socials a:hover {
+    color: #424436;
+    ; /* Color on hover */
+}
+
+.socials:not(:last-child) {
+    margin-right: 16px; /* Margin to the right for social icons */
+}
+
+iframe {
+    width: 100%; /* Full width of the iframe */
+    height: 350px; /* Fixed height */
+    margin: 32px 40px 0; /* Margin above and left */
+    border-radius: 14px; /* Rounded corners */
+}
