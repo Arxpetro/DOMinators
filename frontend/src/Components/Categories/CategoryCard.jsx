@@ -1,4 +1,3 @@
-// src/Components/Categories/CategoryCard.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import s from "./CategoriesPage.module.css";

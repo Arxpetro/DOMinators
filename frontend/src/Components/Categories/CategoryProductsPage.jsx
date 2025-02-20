@@ -50,7 +50,7 @@ const CategoryProductsPage = () => {
 
   return (
     <div className={styles.container}>
-      {/* Шапка категории (если нужно) */}
+      {/* Шапка категории */}
       {category && (
         <div style={{ marginBottom: "20px" }}>
           <img
