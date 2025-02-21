@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CardHolder from "../CardHolder/CardHolder";
+import CardHolder from "../../CardHolder/CardHolder";
 import ProductCard from "../../ProductCard/ProductCard";
 
 function SaleCardHolder() {
