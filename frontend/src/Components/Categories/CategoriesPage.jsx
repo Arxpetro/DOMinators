@@ -9,7 +9,7 @@ const CategoriesPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3333/categories/all") // <-- Ваш API
+      .get("http://localhost:3333/categories/all") 
       .then((response) => {
         console.log("ОТВЕТ API (CategoriesPage):", response.data);
         if (Array.isArray(response.data)) {

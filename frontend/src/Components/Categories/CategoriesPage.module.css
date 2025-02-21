@@ -1,108 +1,165 @@
 .container {
-  max-width: 1200px;
+  max-width: 75rem; /* 1200px */
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.25rem; /* 20px */
 }
 
 /* Заголовок */
 .categoryTitle {
-  /* Из макета: 64px, weight 700, line-height ~70 */
-  font-size: 64px; 
+  font-size: 4rem; /* 64px */
   font-weight: 700;
-  line-height: 70px;
-  color: #424436; /* Из скриншота */
-  margin-bottom: 40px; /* По макету – gap 40px */
+  line-height: 4.375rem; /* 70px */
+  color: #424436;
+  margin-bottom: 2.5rem; /* 40px */
 }
 
-/* ----- Список карточек ----- */
-/* На больших экранах (>=1440px) – 
-   просто flex в одну строку, gap 40px 
-   (а если категорий много, будут уходить за ширину, 
-   но Figma показывает 5 карточек в линию) */
 .categoriesRow {
   display: flex;
-  gap: 40px;
-  /* если хотим, чтобы не переносились, можно ещё white-space: nowrap; 
-     но обычно flex-wrap: wrap; 
-  */
-  flex-wrap: wrap; 
+  gap: 2.5rem; /* 40px */
+  flex-wrap: wrap;
 }
 
-/* При меньших экранах делаем сетку */
-@media (max-width: 1439px) {
-  .categoriesRow {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
-    gap: 16px; /* или 16px, на скрине у вас "Gap 16" / "Gap 40" */
-    justify-content: center;
-  }
-}
 
-/* ====== Оформление одной карточки категории ====== */
+/* Оформление одной карточки категории */
 .categoryCard {
   position: relative;
-  width: 248px;   /* из макета Fill(248) */
-  height: 392px;  /* из макета 350–392px (уточнить точное значение) */
+  width: 15.5rem; /* 248px */
+  height: 24.5rem; /* 392px */
   overflow: hidden;
-  border: 1px solid #DDDDDD;
-  border-radius: 10px; /* "radius big" из макета */
+  border: 0.0625rem solid #DDDDDD; /* 1px */
+  border-radius: 0.625rem; /* 10px */
   background-color: #fff;
-
   text-decoration: none;
   color: inherit;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
 }
 
-/* Ховер-эффект: увеличиваем чуть карточку и добавляем тень */
+/* Ховер-эффект */
 .categoryCard:hover {
   transform: scale(1.05);
-  box-shadow: 0px 12px 18px rgba(0, 0, 0, 0.2);
+  box-shadow: 0rem 0.75rem 1.125rem rgba(0, 0, 0, 0.2); /* 0px 12px 18px */
 }
 
 /* Верхняя часть (картинка) */
 .categoryCardImg {
   width: 100%;
-  height: 70%; /* ~70% от 350px = ~245px высоты под картинку */
+  height: 21.875rem; /* 350px */
   background-size: cover;
   background-position: center;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 0.625rem; /* 10px */
+  border-top-right-radius: 0.625rem;
   transition: transform 0.3s;
 }
 
 .categoryCard:hover .categoryCardImg {
-  /* При ховере можно сделать ещё небольшое увеличение картинки */
   transform: scale(1.07);
 }
 
 /* Нижняя часть (название) */
 .categoryInfo {
   width: 100%;
-  height: 30%; /* оставшиеся ~30% = ~105px */
-  border-top: 1px solid #DDDDDD;
+  height: 2.625rem; /* 42px */
+  border-top: 0.0625rem solid #DDDDDD; /* 1px */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 10px;
+  padding: 0.625rem; /* 10px */
 }
 
 .categoryInfo h3 {
-  font-size: 18px; /* Пример, из макета ~ 1.25rem */
+  font-size: 1.125rem; /* 18px */
   font-weight: 500;
   color: #424436;
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
+/* Категорийный баннер */
 .categoryBanner {
   width: 100%;
-  height: 392px; /* размер из Figma */
+  height: 24.5rem; /* 392px */
   object-fit: cover;
   border-radius: 1rem;
-  
 }
 
+/* Адаптивные стили */
+/* При меньших экранах делаем сетку */
+@media (max-width: 90rem /* 1440px */) {
+  .categoriesRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr)); /* 248px */
+    gap: 1rem; /* 16px */
+    justify-content: center;
+  }
+}
+/* Экран 1000px */
+@media (max-width: 62.5rem /* 1000px */) {
+  .categoriesRow {
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); /* Уменьшаем размер карточек */
+  }
+  .categoryCard {
+    width: 12rem;
+    height: 20rem;
+  }
+  .categoryCardImg {
+    height: 17rem;
+  }
+  .categoryInfo {
+    height: 3rem;
+  }
+}
+
+/* Экран 768px */
+@media (max-width: 48rem) {
+  .categoriesRow {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+  .categoryCard {
+    width: 10rem;
+    height: 18rem;
+  }
+  .categoryCardImg {
+    height: 15rem;
+  }
+  .categoryInfo {
+    height: 3rem;
+  }
+}
+
+/* Экран 480px */
+@media (max-width: 30rem) {
+  .categoriesRow {
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  }
+  .categoryCard {
+    width: 8rem;
+    height: 16rem;
+  }
+  .categoryCardImg {
+    height: 13rem;
+  }
+  .categoryInfo {
+    height: 3rem;
+  }
+}
+
+/* Экран 360px */
+@media (max-width: 22.5rem) {
+  .categoriesRow {
+    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  }
+  .categoryCard {
+    width: 7rem;
+    height: 14rem;
+  }
+  .categoryCardImg {
+    height: 11rem;
+  }
+  .categoryInfo {
+    height: 3rem;
+  }
+}
