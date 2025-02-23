@@ -1,77 +1,72 @@
-/* Footer.module.css */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap');
 
 .footer {
-    font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
-    width: 100%; /* Full width */
-    max-width: 1440px; /* Maximum width */
-    height: auto; /* Allow height to adjust based on content */
-    background-color: #FFFFF1; /* Background color */
-    padding: 40px 0; /* Padding above and below */
-    box-sizing: border-box; /* Include padding in width/height */
+    font-family: 'Montserrat', sans-serif; /* Использовать шрифт Montserrat */
+    width: 1440px; /* Установленная ширина */
+    height: auto; /* Позволить высоте изменяться в зависимости от содержимого */
+    background-color: #FFFFF1; /* Цвет фона */
+    padding: 40px 0; /* Отступы сверху и снизу */
+    box-sizing: border-box; /* Включить отступы в ширину/высоту */
 }
 
 .contact {
-    padding-left: 40px; /* Left padding */
-    font-size: 64px; /* Font size */
-    color: #424436; /* Text color */
+    padding-left: 40px; /* Левый отступ */
+    font-size: 64px; /* Размер шрифта */
+    color: #424436; /* Цвет текста */
 }
 
 .container {
-    display: grid; /* Use grid layout */
-    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
-    grid-template-rows: auto; /* Automatic row height */
-    gap: 32px; /* Space between grid items */
-    margin-top: 40px; /* Margin above */
-    padding: 0 40px; /* Padding on the sides */
+    display: grid; /* Использовать сетку */
+    grid-template-columns: repeat(2, 1fr); /* Две равные колонки */
+    gap: 40px; /* Пробел между элементами сетки */
+    margin-top: 40px; /* Отступ сверху */
+    padding: 0 40px; /* Отступы по бокам */
 }
 
 .info {
-    background-color: #F2F6D3; /* Background color for info section */
-    padding: 32px; /* Padding inside info section */
-    color:  #424436;
-    ; /* Text color */
-    font-size: 20px; /* Font size */
-    line-height: 1.5; /* Line height */
-    border-radius: 14px; /* Rounded corners */
-    min-width: 300px; /* Minimum width for each info box */
-    height: 150px; /* Fixed height for each info box */
-    display: flex; /* Use flexbox for alignment */
-    flex-direction: column; /* Stack items vertically */
-    justify-content: center; /* Center content vertically */
+    background-color: #F2F6D3; /* Цвет фона для секции информации */
+    padding: 32px; /* Отступ внутри секции информации */
+    color: #424436; /* Цвет текста */
+    font-size: 20px; /* Размер шрифта */
+    line-height: 1.5; /* Межстрочный интервал */
+    border-radius: 14px; /* Закругленные углы */
+    min-width: 300px; /* Минимальная ширина для каждого блока информации */
+    height: 150px; /* Фиксированная высота для каждого блока информации */
+    display: flex; /* Использовать flexbox для выравнивания */
+    flex-direction: column; /* Расположение элементов вертикально */
+    justify-content: center; /* Центрирование содержимого по вертикали */
 }
 
 .p-footer {
-    font-size: 20px; /* Font size for paragraph */
+    font-size: 20px; /* Размер шрифта для абзаца */
 }
 
 .h-footer {
-    color: #424436; /* Text color for headings */
-    font-size: 40px; /* Font size for headings */
-    margin-top: 16px; /* Margin above */
+    color: #424436; /* Цвет текста для заголовков */
+    font-size: 40px; /* Размер шрифта для заголовков */
+    margin-top: 16px; /* Отступ сверху */
 }
 
 .socials {
-    margin-top: 16px; /* Margin above social icons */
+    margin-top: 16px; /* Отступ сверху для иконок соцсетей */
 }
 
 .socials a {
-    color: #8B8B8B; /* Grey color for social media icons */
-    transition: color 0.3s; /* Transition effect for color change */
+    color: #8B8B8B; /* Серый цвет для иконок соцсетей */
+    transition: color 0.3s; /* Эффект перехода для изменения цвета */
 }
 
 .socials a:hover {
-    color: #424436;
-    ; /* Color on hover */
+    color: #424436; /* Цвет при наведении */
 }
 
 .socials:not(:last-child) {
-    margin-right: 16px; /* Margin to the right for social icons */
+    margin-right: 16px; /* Отступ справа для иконок соцсетей */
 }
 
 iframe {
-    width: 100%; /* Full width of the iframe */
-    height: 350px; /* Fixed height */
-    margin: 32px 40px 0; /* Margin above and left */
-    border-radius: 14px; /* Rounded corners */
+    width: 100%; /* Полная ширина iframe */
+    height: 350px; /* Фиксированная высота */
+    margin: 32px 0 0; /* Отступ сверху */
+    border-radius: 14px; /* Закругленные углы */
 }

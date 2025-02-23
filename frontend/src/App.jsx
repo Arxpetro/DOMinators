@@ -21,7 +21,8 @@ function App() {
 						<Route path="/products"  element={<AllProductsPage key='products' title='All products' discounted={false}/>} />
 						<Route path="/sales"  element={<AllProductsPage key='sales' title='Discounted items' discounted={true}/>} />
 						<Route path="/categories" element={<CategoriesPage />} />
-            			<Route path="/categories/:id" element={<CategoryProductsPage />} />
+						{/* add changes to sergey's component */}
+            			<Route path="/categories/:id" element={<CategoryProductsPage />} /> 
             			<Route path="/products/:id" element={<ProductPage />} />
 
 						<Route path="*" element={<NotFoundPage />} />
