@@ -1,11 +1,13 @@
 .categoriesContainer {
   position: relative; /* Устанавливаем позиционирование для контейнера */
-  width: 1360px; /* Ширина контейнера */
+  width: 100%; /* Ширина контейнера на 100% для адаптивности */
+  max-width: 1360px; /* Максимальная ширина контейнера */
   height: auto; /* Высота контейнера автоматически подстраивается под содержимое */
-  top: 80px; /* Уменьшили отступ сверху */
-  left: 40px; /* Отступ слева */
+  top: 0; /* Уменьшили отступ сверху */
+  left: 0; /* Убираем отступ слева */
   padding: 20px;
   font-family: Arial, sans-serif;
+  margin: 0 auto; /* Центрируем контейнер */
 }
 
 .categoriesContent {
@@ -16,13 +18,14 @@
 .categoriesHeader {
   display: flex;
   align-items: center; /* Центрируем элементы по вертикали */
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .categoriesTitle {
-  font-weight: 700;
+  font-weight: 400;
   font-size: 64px;
   margin: 0;
+  color: darkgrey;
 }
 
 .separatorLine {
@@ -40,7 +43,7 @@
   margin-left: 10px; /* Отступ слева от кнопки */
   align-self: center; /* Центрируем кнопку по вертикали */
   padding: 5px 10px; /* Отступы внутри кнопки */
-  border: solid; /*  рамку */
+  border: solid; /* Рамка */
   background: none; /* Убираем фон */
   cursor: pointer; /* Указатель при наведении */
 }
@@ -51,12 +54,13 @@
 
 .categoriesImages {
   display: flex;
+  flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
   justify-content: space-between; /* Распределяем элементы по всей ширине */
-  gap: 40px; /* Отступ между категориями */
+  gap: 20px; /* Отступ между категориями */
 }
 
 .categoriesItem {
-  width: 316px; /* Ширина каждой категории */
+  width: calc(25% - 20px); /* 4 элемента в ряд на больших экранах */
   height: 392px; /* Высота первой категории */
   text-align: center;
 }
@@ -74,29 +78,23 @@
 
 .imgCategory {
   width: 100%; /* Занимает всю ширину родительского элемента */
-  height: 392; /* Автоматическая высота для сохранения пропорций */
+  height: 100%; /* Автоматическая высота для сохранения пропорций */
   object-fit: cover; /* Сохраняем пропорции изображения */
   border-radius: 5px; /* Закругленные углы изображения */
 }
 
-
-
-
-/* Установим высоты для  категории  */
-
-/* .categoriesItem:nth-child(2)
-.categoriesItem:nth-child(1),
-.categoriesItem:nth-child(3),
-.categoriesItem:nth-child(4) {
-  height: 392px; /* Высота остальных категорий */
- /* */ 
-
-
 /* медиа запросы для адаптивности */
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
   .categoriesItem {
-    width: calc(50% - 20px); /* 2 элемента в ряд на экранах шириной до 1024px */
-    height: 300px; /* Уменьшаем высоту для меньших экранов */
+    width: calc(33.33% - 20px); /* 3 элемента в ряд на экранах шириной до 1440px */
+    height: 300px; /* Высота для экранов до 1440px */
+  }
+}
+
+@media (max-width: 1000px) {
+  .categoriesItem {
+    width: calc(50% - 20px); /* 2 элемента в ряд на экранах шириной до 1000px */
+    height: 250px; /* Высота для экранов до 1000px */
   }
 }
 
@@ -106,8 +104,8 @@
   }
 
   .categoriesItem {
-    width: calc(50% - 20px); /* 2 элемента в ряд на экранах шириной до 768px */
-    height: 250px; /* Уменьшаем высоту для меньших экранов */
+    width: calc(100% - 20px); /* 1 элемент в ряд на экранах шириной до 768px */
+    height: 200px; /* Уменьшаем высоту для меньших экранов */
   }
 }
 
@@ -115,4 +113,17 @@
   .categoriesTitle {
     font-size: 32px; /* Уменьшаем размер заголовка */
   }
-} /* Ошибка: отсутствовала закрывающая фигурная скобка для последнего медиа-запроса */
+
+  .categoriesItem {
+    height: 180px; /* Уменьшаем высоту для экранов до 480px */
+  }
+}
+@media (max-width: 360px) {
+  .categoriesTitle {
+    font-size: 24px; /* Уменьшаем размер заголовка для очень маленьких экранов */
+  }
+
+  .categoriesItem {
+    height: 150px; /* Уменьшаем высоту для экранов до 360px */
+  }
+}

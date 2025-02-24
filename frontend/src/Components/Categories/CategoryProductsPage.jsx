@@ -92,16 +92,8 @@ const CategoryProductsPage = () => {
       <div className={styles.productsList}>
         {sorted.length > 0 ? (
           sorted.map((product) => {
-            // Передаём в ProductCard нужные поля
-            // продукт передавть в айтем внутри продукт карт /айтем фор карт не нужен
-            const itemForCard = {
-              id: product.id,
-              image: product.image,
-              title: product.title,
-              price: product.oldPrice || product.price,
-              discont_price: product.oldPrice ? product.price : null,
-            };
-            return <ProductCard key={product.id} item={itemForCard} />;
+            // Изменение: Передаем продукт напрямую в ProductCard
+            return <ProductCard key={product.id} product={product} />; // Изменение: передаем product вместо itemForCard
           })
         ) : (
           <p className={styles.noProducts}>No products found</p>
