@@ -93,6 +93,7 @@ const CategoryProductsPage = () => {
         {sorted.length > 0 ? (
           sorted.map((product) => {
             // Передаём в ProductCard нужные поля
+            // продукт передавть в айтем внутри продукт карт /айтем фор карт не нужен
             const itemForCard = {
               id: product.id,
               image: product.image,

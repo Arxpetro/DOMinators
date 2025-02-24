@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./Categories.module.css";
+import styles from "./Categories.module.css"; // Импортируем стили как объект
 import { Link } from "react-router-dom";
 
 const Categories = () => {
@@ -28,24 +28,25 @@ const Categories = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="categories-container">
-      <div className="categories-content">
-        <div className="categories-header">
-          <h1 className="categories-title">Categories</h1>
+    <div className={styles.categoriesContainer}>
+      <div className={styles.categoriesContent}>
+        <div className={styles.categoriesHeader}>
+          <h1 className={styles.categoriesTitle}>Categories</h1>
+          <div className={styles.separatorLine}></div> {/* Линия */}
+          <Link to="/allcategories" className={styles.allCategoriesButton}>All Categories</Link> {/* Кнопка "All Categories" */}
         </div>
-        <div className="categories-images">
-          {categories.map((category) => (
-            <div key={category.id} className="categories-item">
-              <Link to="/categoryproducts">
+       
+        <div className={styles.categoriesImages}>
+          {categories.slice(0, 4).map((category) => ( // Отображаем только первые 4 категории
+            <div key={category.id} className={styles.categoriesItem}>
+              <Link to="/categoryproducts" className={styles.categoryLink}>
                 <img
-                  className="img_category"
+                  className={styles.imgCategory}
                   src={`http://localhost:3333/${category.image}`}
                   alt={category.title}
                 />
-              </Link>
-              <h3 className="categories-text">{category.title}</h3>
-              <Link to="/categoryproducts">
-                <button>Get more information...</button>
+                <h3 className={styles.categoriesText}>{category.title}</h3>
+            
               </Link>
             </div>
           ))}

@@ -1,17 +1,21 @@
 .categoriesContainer {
+  position: relative; /* Устанавливаем позиционирование для контейнера */
+  width: 1360px; /* Ширина контейнера */
+  height: auto; /* Высота контейнера автоматически подстраивается под содержимое */
+  top: 80px; /* Уменьшили отступ сверху */
+  left: 40px; /* Отступ слева */
   padding: 20px;
   font-family: Arial, sans-serif;
 }
 
 .categoriesContent {
-  max-width: 1200px; 
+  max-width: 1360px; /* Максимальная ширина контента */
   margin: 0 auto;
 }
 
 .categoriesHeader {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: center; /* Центрируем элементы по вертикали */
   margin-bottom: 16px;
 }
 
@@ -21,25 +25,45 @@
   margin: 0;
 }
 
-.categoriesSelect {
-  width: 142px;
-  height: 36px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.separatorLine {
+  flex-grow: 1; /* Позволяет линии занимать оставшееся пространство */
+  height: 2px; /* Высота линии */
+  background-color: lightgray; /* Цвет линии */
+  margin-left: 20px; /* Отступ слева от заголовка */
+  margin-right: 10px; /* Отступ справа от линии */
+}
+
+.allCategoriesButton {
+  font-size: 18px; /* Размер шрифта для кнопки "All Categories" */
+  color: lightgray; /* Цвет текста кнопки */
+  text-decoration: none; /* Убираем подчеркивание */
+  margin-left: 10px; /* Отступ слева от кнопки */
+  align-self: center; /* Центрируем кнопку по вертикали */
+  padding: 5px 10px; /* Отступы внутри кнопки */
+  border: solid; /*  рамку */
+  background: none; /* Убираем фон */
+  cursor: pointer; /* Указатель при наведении */
+}
+
+.allCategoriesButton:hover {
+  text-decoration: underline; /* Подчеркивание при наведении */
 }
 
 .categoriesImages {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
+  justify-content: space-between; /* Распределяем элементы по всей ширине */
+  gap: 40px; /* Отступ между категориями */
 }
 
 .categoriesItem {
-  flex: 1 1 calc(25% - 16px);
-  max-width: 316px;
+  width: 316px; /* Ширина каждой категории */
+  height: 392px; /* Высота первой категории */
   text-align: center;
+}
+
+.categoryLink {
+  text-decoration: none; /* Убираем подчеркивание */
+  color: inherit; /* Унаследуем цвет текста */
 }
 
 .categoriesText {
@@ -48,30 +72,47 @@
   margin: 12px 0 4px;
 }
 
+.imgCategory {
+  width: 100%; /* Занимает всю ширину родительского элемента */
+  height: 392; /* Автоматическая высота для сохранения пропорций */
+  object-fit: cover; /* Сохраняем пропорции изображения */
+  border-radius: 5px; /* Закругленные углы изображения */
+}
+
+
+
+
+/* Установим высоты для  категории  */
+
+/* .categoriesItem:nth-child(2)
+.categoriesItem:nth-child(1),
+.categoriesItem:nth-child(3),
+.categoriesItem:nth-child(4) {
+  height: 392px; /* Высота остальных категорий */
+ /* */ 
+
+
+/* медиа запросы для адаптивности */
+@media (max-width: 1024px) {
+  .categoriesItem {
+    width: calc(50% - 20px); /* 2 элемента в ряд на экранах шириной до 1024px */
+    height: 300px; /* Уменьшаем высоту для меньших экранов */
+  }
+}
+
 @media (max-width: 768px) {
   .categoriesTitle {
-    font-size: 48px;
+    font-size: 48px; /* Уменьшаем размер заголовка */
   }
 
   .categoriesItem {
-    flex: 1 1 calc(50% - 16px); 
+    width: calc(50% - 20px); /* 2 элемента в ряд на экранах шириной до 768px */
+    height: 250px; /* Уменьшаем высоту для меньших экранов */
   }
 }
 
 @media (max-width: 480px) {
   .categoriesTitle {
-    font-size: 32px;
+    font-size: 32px; /* Уменьшаем размер заголовка */
   }
-
-  .categoriesItem {
-    flex: 1 1 100%;
-    height: 20px;
-  }
-}
-
-.categoriesItem img {
-  width: 180px; 
-  height: 180px; 
-  object-fit: cover; 
-  border-radius: 5px;
-}
+} /* Ошибка: отсутствовала закрывающая фигурная скобка для последнего медиа-запроса */
