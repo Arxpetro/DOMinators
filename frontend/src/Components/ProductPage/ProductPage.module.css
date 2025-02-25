@@ -133,101 +133,93 @@
 }
 
 /* Медиа-запросы для адаптивности */
+/* Медиа-запросы */
 @media (max-width: 1440px) {
-  .productPage {
-    width: 90%; /* Ширина 90% на экранах до 1440px */
-    padding: 15px; /* Уменьшаем отступы */
+  .container {
+      max-width: 18rem; /* Уменьшение максимальной ширины */
   }
 
-  .productPage img {
-    width: 100%; /* Изображение занимает 100% ширины */
+  .dprice {
+      font-size: 2.25rem; /* Уменьшение размера шрифта */
   }
 
-  .productPage h1 {
-    font-size: 22px; /* Уменьшаем размер заголовка */
+  .price {
+      font-size: 1.15rem; /* Уменьшение размера шрифта */
   }
 
-  .productPage h2 {
-    font-size: 18px; /* Уменьшаем размер подзаголовка */
-  }
-
-  .productPage button {
-    width: 100%; /* Кнопка занимает 100% ширины */
+  .salePercent {
+      font-size: 1.15rem; /* Уменьшение размера шрифта */
   }
 }
 
 @media (max-width: 1000px) {
-  .productPage {
-    width: 90%; /* Ширина 90% на экранах до 1000px */
-    padding: 15px; /* Уменьшаем отступы */
+  .container {
+      max-width: 16rem; /* Уменьшение максимальной ширины */
+  }
+
+  .dprice {
+      font-size: 2rem; /* Уменьшение размера шрифта */
+  }
+
+  .price {
+      font-size: 1rem; /* Уменьшение размера шрифта */
+  }
+
+  .salePercent {
+      font-size: 1rem; /* Уменьшение размера шрифта */
   }
 }
 
 @media (max-width: 768px) {
-  .productPage {
-    width: 100%; /* Ширина 100% на экранах до 768px */
-    padding: 15px; /* Уменьшаем отступы */
+  .container {
+      max-width: 14rem; /* Уменьшение максимальной ширины */
   }
 
-  .productPage img {
-    width: 100%; /* Изображение занимает 100% ширины */
+  .dprice {
+      font-size: 1.75rem; /* Уменьшение размера шрифта */
   }
 
-  .productPage h1 {
-    font-size: 20px; /* Уменьшаем размер заголовка */
+  .price {
+      font-size: 0.9rem; /* Уменьшение размера шрифта */
   }
 
-  .productPage h2 {
-    font-size: 16px; /* Уменьшаем размер подзаголовка */
-  }
-
-  .productPage button {
-    width: 100%; /* Кнопка занимает 100% ширины */
+  .salePercent {
+      font-size: 0.9rem; /* Уменьшение размера шрифта */
   }
 }
 
 @media (max-width: 480px) {
-  .productPage {
-    padding: 10px; /* Уменьшаем отступы */
+  .container {
+      max-width: 12rem; /* Уменьшение максимальной ширины */
   }
 
-  .productPage h1 {
-    font-size: 18px; /* Уменьшаем размер заголовка */
+  .dprice {
+      font-size: 1.5rem; /* Уменьшение размера шрифта */
   }
 
-  .productPage h2 {
-    font-size: 14px; /* Уменьшаем размер подзаголовка */
+  .price {
+      font-size: 0.8rem; /* Уменьшение размера шрифта */
   }
 
-  .productPage p {
-    font-size: 14px; /* Уменьшаем размер текста параграфа */
-  }
-
-  .productPage button {
-    padding: 8px; /* Уменьшаем отступы для кнопки */
-    font-size: 14px; /* Уменьшаем размер шрифта для кнопки */
+  .salePercent {
+      font-size: 0.8rem; /* Уменьшение размера шрифта */
   }
 }
 
 @media (max-width: 360px) {
-  .productPage {
-    padding: 5px; /* Уменьшаем отступы */
+  .container {
+      max-width: 10rem; /* Уменьшение максимальной ширины */
   }
 
-  .productPage h1 {
-    font-size: 16px; /* Уменьшаем размер заголовка */
+  .dprice {
+      font-size: 1.25rem; /* Уменьшение размера шрифта */
   }
 
-  .productPage h2 {
-    font-size: 12px; /* Уменьшаем размер подзаголовка */
+  .price {
+      font-size: 0.7rem; /* Уменьшение размера шрифта */
   }
 
-  .productPage p {
-    font-size: 12px; /* Уменьшаем размер текста параграфа */
-  }
-
-  .productPage button {
-    padding: 6px; /* Уменьшаем отступы для кнопки */
-    font-size: 12px; /* Уменьшаем размер шрифта для кнопки */
+  .salePercent {
+      font-size: 0.7rem; /* Уменьшение размера шрифта */
   }
 }

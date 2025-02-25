@@ -71,3 +71,94 @@ iframe {
     border-radius: 14px; /* Закругленные углы */
 }
 /* media запросы добавить со старого css */
+@media (max-width: 1440px) {
+    .footer {
+        width: 100%; /* Полная ширина для экранов меньше 1440px */
+    }
+}
+
+@media (max-width: 1000px) {
+    .contact {
+        font-size: 48px; /* Уменьшение размера шрифта */
+        padding-left: 20px; /* Уменьшение отступа */
+    }
+
+    .container {
+        grid-template-columns: 1fr; /* Одна колонка */
+        padding: 0 20px; /* Уменьшение отступов по бокам */
+    }
+
+    .info {
+        height: auto; /* Позволить высоте изменяться в зависимости от содержимого */
+    }
+}
+
+@media (max-width: 768px) {
+    .contact {
+        font-size: 36px; /* Уменьшение размера шрифта */
+    }
+
+    .info {
+        font-size: 18px; /* Уменьшение размера шрифта */
+    }
+
+    .h-footer {
+        font-size: 32px; /* Уменьшение размера шрифта заголовков
+        }
+
+    .socials a {
+        font-size: 16px; /* Уменьшение размера шрифта для иконок соцсетей */
+    }
+
+    iframe {
+        height: 250px; /* Уменьшение высоты iframe */
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        font-size: 28px; /* Уменьшение размера шрифта */
+        padding-left: 10px; /* Уменьшение отступа */
+    }
+
+    .info {
+        font-size: 16px; /* Уменьшение размера шрифта */
+        padding: 20px; /* Уменьшение отступов внутри блока информации */
+    }
+
+    .h-footer {
+        font-size: 24px; /* Уменьшение размера шрифта заголовков */
+    }
+
+    .socials a {
+        font-size: 14px; /* Уменьшение размера шрифта для иконок соцсетей */
+    }
+
+    iframe {
+        height: 200px; /* Уменьшение высоты iframe */
+    }
+}
+
+@media (max-width: 360px) {
+    .contact {
+        font-size: 24px; /* Уменьшение размера шрифта */
+        padding-left: 5px; /* Уменьшение отступа */
+    }
+
+    .info {
+        font-size: 14px; /* Уменьшение размера шрифта */
+        padding: 15px; /* Уменьшение отступов внутри блока информации */
+    }
+
+    .h-footer {
+        font-size: 20px; /* Уменьшение размера шрифта заголовков */
+    }
+
+    .socials a {
+        font-size: 12px; /* Уменьшение размера шрифта для иконок соцсетей */
+    }
+
+    iframe {
+        height: 150px; /* Уменьшение высоты iframe */
+    }
+}
