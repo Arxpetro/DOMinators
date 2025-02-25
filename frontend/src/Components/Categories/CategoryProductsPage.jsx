@@ -14,6 +14,7 @@ const CategoryProductsPage = () => {
   const [priceFilter, setPriceFilter] = useState({ min: "", max: "" });
 
   useEffect(() => {
+    // Запрос к API для получения категории и продуктов
     axios
       .get(`http://localhost:3333/categories/${id}`)
       .then((response) => {
@@ -93,7 +94,7 @@ const CategoryProductsPage = () => {
         {sorted.length > 0 ? (
           sorted.map((product) => {
             // Изменение: Передаем продукт напрямую в ProductCard
-            return <ProductCard key={product.id} product={product} />; // Изменение: передаем product вместо itemForCard
+            return <ProductCard key={product.id} product={product} />;
           })
         ) : (
           <p className={styles.noProducts}>No products found</p>

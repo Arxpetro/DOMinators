@@ -1,12 +1,12 @@
 .categoriesContainer {
   position: relative; /* Устанавливаем позиционирование для контейнера */
   width: 100%; /* Ширина контейнера на 100% для адаптивности */
-  max-width: 1360px; /* Максимальная ширина контейнера */
+  /* max-width: 1360px; Максимальная ширина контейнера /this was a problem of location of my container*/
   height: auto; /* Высота контейнера автоматически подстраивается под содержимое */
-  top: 0; /* Уменьшили отступ сверху */
-  left: 0; /* Убираем отступ слева */
+  top: 20px; /* Уменьшили отступ сверху */
+  left:auto; /* Убираем отступ слева */
   padding: 20px;
-  font-family: Arial, sans-serif;
+ font-family: Arial, sans-serif;
   margin: 0 auto; /* Центрируем контейнер */
 }
 
@@ -22,10 +22,10 @@
 }
 
 .categoriesTitle {
-  font-weight: 400;
+  font-weight: 700; /* Changed from 400 to 700 to make the "Categories" title bold */
   font-size: 64px;
   margin: 0;
-  color: darkgrey;
+  color: dark;
 }
 
 .separatorLine {
@@ -61,9 +61,9 @@
 
 .categoriesItem {
   width: calc(25% - 20px); /* 4 элемента в ряд на больших экранах */
-  height: 392px; /* Высота первой категории */
+  height: auto; /* Высота первой категории */
   text-align: center;
-}
+} 
 
 .categoryLink {
   text-decoration: none; /* Убираем подчеркивание */
@@ -72,14 +72,14 @@
 
 .categoriesText {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 400; /* Changed from bold to 400 to make each category name bold */
   margin: 12px 0 4px;
 }
 
 .imgCategory {
   width: 100%; /* Занимает всю ширину родительского элемента */
-  height: 100%; /* Автоматическая высота для сохранения пропорций */
-  object-fit: cover; /* Сохраняем пропорции изображения */
+  height: 200px; /* Фиксированная высота для всех изображений */
+  object-fit: cover; /* Сохраняем пропорции изображения и обрезаем его/поэтому у меня was not right img size */
   border-radius: 5px; /* Закругленные углы изображения */
 }
 
