@@ -1,40 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap');
 
 .footer {
-    font-family: 'Montserrat', sans-serif; /* Использовать шрифт Montserrat */
-    width: 1440px; /* Установленная ширина */
-    height: auto; /* Позволить высоте изменяться в зависимости от содержимого */
-    background-color: #FFFFF1; /* Цвет фона */
-    padding: 40px 0; /* Отступы сверху и снизу */
-    box-sizing: border-box; /* Включить отступы в ширину/высоту */
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+    width: 1440px;
+    height: 948px;
 }
+
 
 .contact {
-    padding-left: 40px; /* Левый отступ */
+    max-width: 130rem; 
+    margin: 0 auto;
+    padding: 1.25rem; /* 20px */
     font-size: 64px; /* Размер шрифта */
     color: #424436; /* Цвет текста */
+    
 }
-
+/* contact */
 .container {
     display: grid; /* Использовать сетку */
     grid-template-columns: repeat(2, 1fr); /* Две равные колонки */
-    gap: 40px; /* Пробел между элементами сетки */
-    margin-top: 40px; /* Отступ сверху */
-    padding: 0 40px; /* Отступы по бокам */
+    grid-template-columns: 780px 548px;
+    grid-template-rows: 150px 194px;
+    gap: 32px;
+    margin-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
-
+    
+/* contact's containers 4 themselves */
 .info {
     background-color: #F2F6D3; /* Цвет фона для секции информации */
     padding: 32px; /* Отступ внутри секции информации */
     color: #424436; /* Цвет текста */
-    font-size: 20px; /* Размер шрифта */
-    line-height: 1.5; /* Межстрочный интервал */
-    border-radius: 14px; /* Закругленные углы */
-    min-width: 300px; /* Минимальная ширина для каждого блока информации */
-    height: 150px; /* Фиксированная высота для каждого блока информации */
-    display: flex; /* Использовать flexbox для выравнивания */
-    flex-direction: column; /* Расположение элементов вертикально */
-    justify-content: center; /* Центрирование содержимого по вертикали */
+    font-weight: 600;
+    /* указывает на толщину символов font-weight */
+    size: 40px;
+    border-radius: 10px;
+    gap:16px;
 }
 
 .p-footer {
@@ -63,12 +65,14 @@
 .socials:not(:last-child) {
     margin-right: 16px; /* Отступ справа для иконок соцсетей */
 }
-
+/*  Встраивание карт из Google Maps/Встраивание форм или приложений, которые находятся на других сайтах/встраиваемые фивео это все iframe*/
 iframe {
-    width: 100%; /* Полная ширина iframe */
-    height: 350px; /* Фиксированная высота */
-    margin: 32px 0 0; /* Отступ сверху */
-    border-radius: 14px; /* Закругленные углы */
+    width: 1360px;
+    height: 350px;
+    margin-left: 40px;
+    margin-top: 32px;
+    /* марджин - отступ сверху */
+    border-radius: 14px;
 }
 /* media запросы добавить со старого css */
 @media (max-width: 1440px) {

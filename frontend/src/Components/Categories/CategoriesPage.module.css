@@ -1,5 +1,5 @@
 .container {
-  max-width: 75rem; /* 1200px */
+  max-width: 130rem; 
   margin: 0 auto;
   padding: 1.25rem; /* 20px */
 }
@@ -88,6 +88,17 @@
 
 /* Адаптивные стили */
 /* При меньших экранах делаем сетку */
+@media only screen and (min-width: 2880px) and (min-height: 1800px) {
+  /* Ваши стили для дисплеев 2880x1800 */
+  body {
+    background-color: #f0f0f0; /* Пример изменения фона */
+  }
+
+  .example-class {
+    font-size: 2rem; /* Увеличение размера шрифта */
+  }
+ } 
+ /* это для моего мака */
 @media (max-width: 90rem /* 1440px */) {
   .categoriesRow {
     display: grid;
