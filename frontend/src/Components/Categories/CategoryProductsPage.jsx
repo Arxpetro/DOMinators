@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import styles from "./CategoriesPage.module.css";
-import ProductCard from "../ProductCard/ProductCard";
+import styles from "./CategoryProductPageNew.module.css";
+
 
 const CategoryProductsPage = () => {
   const { id } = useParams();
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState(null);
-
-  // Фильтры, сортировки и т.д.
+  const [onlyDiscounted, setOnlyDiscounted] = useState(false);
   const [sortType, setSortType] = useState("default");
   const [priceFilter, setPriceFilter] = useState({ min: "", max: "" });
 
@@ -28,43 +27,50 @@ const CategoryProductsPage = () => {
       .catch((error) => console.error("Ошибка:", error));
   }, [id]);
 
-  // Пример фильтра по цене
+  // Фильтрация товаров по цене и скидке
   const filtered = products.filter((p) => {
     const min = priceFilter.min ? Number(priceFilter.min) : 0;
     const max = priceFilter.max ? Number(priceFilter.max) : Infinity;
-    return p.price >= min && p.price <= max;
+    const meetsPrice = p.price >= min && p.price <= max;
+    const meetsDiscount = onlyDiscounted ? p.oldPrice > p.price : true;
+    return meetsPrice && meetsDiscount;
   });
 
-  // Пример сортировки
+  // Сортировка товаров
   const sorted = [...filtered].sort((a, b) => {
-    if (sortType === "price") {
-      return a.price - b.price;
+    switch (sortType) {
+      case "price-low":
+        return a.price - b.price;
+      case "price-high":
+        return b.price - a.price;
+      case "name-az":
+        return a.title.localeCompare(b.title);
+      case "name-za":
+        return b.title.localeCompare(a.title);
+      default:
+        return 0;
     }
-    if (sortType === "discount") {
-      const discountA = (a.oldPrice ?? a.price) - a.price;
-      const discountB = (b.oldPrice ?? b.price) - b.price;
-      return discountB - discountA;
-    }
-    return 0;
   });
 
   return (
     <div className={styles.container}>
-      {/* Шапка категории */}
-      {category && (
-        <div style={{ marginBottom: "20px" }}>
-          <img
-            src={`http://localhost:3333${category.image}`}
-            alt={category.title}
-            className={styles.categoryBanner}
-          />
-          <h2 className={styles.categoryTitle}>{category.title}</h2>
-        </div>
-      )}
+  {/* Навигация */}
+  {category?.title && (
+    <nav className={styles.breadcrumbs}>
+      <Link to="/" className={`${styles.breadcrumbButton} ${styles.lightText}`}>Main Page</Link>
+      <span className={styles.separator}></span> {/* Разделитель */}
+      <Link to="/categories" className={`${styles.breadcrumbButton} ${styles.lightText}`}>Categories</Link>
+      <span className={styles.separator}></span> {/* Разделитель */}
+      <span className={`${styles.breadcrumbButton} ${styles.darkText}`}>{category.title}</span>
+    </nav>
+  )}
 
-      {/* Фильтр и сортировка */}
-      <div className={styles.controls}>
-        <div className={styles.filterSort}>
+      {/* Заголовок категории */}
+      {category && <h2 className={styles.categoryTitle}>{category.title}</h2>}
+
+      {/* Фильтры */}
+      <div className={styles.filters}>
+        <div className={styles.filterBlock}>
           <label>Price:</label>
           <input
             type="number"
@@ -78,27 +84,61 @@ const CategoryProductsPage = () => {
             value={priceFilter.max}
             onChange={(e) => setPriceFilter({ ...priceFilter, max: e.target.value })}
           />
+        </div>
 
-          <label>Sort by:</label>
+        <div className={styles.filterBlock}>
+          <label>Sorted:</label>
           <select value={sortType} onChange={(e) => setSortType(e.target.value)}>
-            <option value="default">Default</option>
-            <option value="price">Price</option>
-            <option value="discount">Discount</option>
+            <option value="default">By Default</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="name-az">Name A-Z</option>
+            <option value="name-za">Name Z-A</option>
           </select>
+        </div>
+
+        {/* Фильтр "Discounted Items" */}
+        <div className={styles.filterBlock}>
+          <label>
+            Discounted Items
+            <input
+              type="checkbox"
+              checked={onlyDiscounted}
+              onChange={() => setOnlyDiscounted(!onlyDiscounted)}
+              className={styles.discountCheckbox}
+            />
+          </label>
         </div>
       </div>
 
-    {/* Сетка товаров */}
-    <div className={styles.productsList}>
-        {products.length > 0 ? (
-          products.slice(0, 8).map((product) => (
-            <ProductCard key={product.id} product={product} />
-            // так я отобоазила 8 товаров через метод slice
-          ))
-        ) : (
-          <p className={styles.noProducts}>No products found</p>
-        )}
+      {/* Контейнер товаров (2 ряда по 4 товара) */}
+<div className={styles.productsContainer}>
+  {sorted.length > 0 ? (
+    sorted.slice(0, 8).map((product) => (
+      <div key={product.id} className={styles.productCard}>
+        <img
+          src={`http://localhost:3333${product.image}`} //
+          alt={product.title}
+          className={styles.productImage}
+        />
+        <h3 className={styles.productTitle}>{product.title}</h3>
+        <p className={styles.productPrice}>
+          {product.oldPrice ? (
+            <>
+              <span className={styles.oldPrice}>{product.oldPrice}</span>
+              <span className={styles.currentPrice}>{product.price}</span>
+            </>
+          ) : (
+            <span className={styles.currentPrice}>{product.price}</span>
+          )}
+        </p>
       </div>
+    ))
+  ) : (
+    <p className={styles.noProducts}>No products found</p>
+  )}
+</div>
+    
     </div>
   );
 };
