@@ -28,7 +28,7 @@
   cursor: default;
 }
   /* Стиль для кнопки "Back to Categories" */
-  .backButton {
+  /* .backButton {
     background: none;
     border: none;
     color: #007bff;
@@ -39,7 +39,7 @@
   
   .backButton:hover {
     color: #0056b3;
-  }
+  } */
   
 .container {
   max-width: 1360px;;
@@ -73,15 +73,15 @@
 
 /* Контейнер фильтров */
 .filters {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background: #f8f8f8;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 2rem;
+    color: #424436;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 2rem 2.5rem;
 }
+
 
 /* Блок каждого фильтра */
 .filterBlock {

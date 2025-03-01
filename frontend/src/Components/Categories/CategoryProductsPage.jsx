@@ -68,18 +68,7 @@ return (
    {/* Заголовок категории */}
 {category && <h2 className={styles.categoryTitle}>{category.title}</h2>}
 
-{/* Фильтр "Discounted Items" теперь после заголовка категории */}
-<div className={styles.discountFilter}>
-  <label>
-    Discounted Items
-    <input
-      type="checkbox"
-      checked={onlyDiscounted}
-      onChange={() => setOnlyDiscounted(!onlyDiscounted)}
-      className={styles.discountCheckbox}
-    />
-  </label>
-</div>
+
 
     {/* Фильтры */}
     <div className={styles.filters}>
@@ -102,6 +91,18 @@ return (
           }
         />
       </div>
+      {/* Фильтр "Discounted Items" теперь после заголовка категории */}
+<div className={styles.discountFilter}>
+  <label>
+    Discounted Items
+    <input
+      type="checkbox"
+      checked={onlyDiscounted}
+      onChange={() => setOnlyDiscounted(!onlyDiscounted)}
+      className={styles.discountCheckbox}
+    />
+  </label>
+</div>
 
       <div className={styles.filterBlock}>
         <label>Sorted:</label>
@@ -116,6 +117,7 @@ return (
             <option value="name-za">Name Z-A</option>
           </select>
         </div>
+        
       </div>
 
       {/* Контейнер товаров (2 ряда по 4 товара) */}
