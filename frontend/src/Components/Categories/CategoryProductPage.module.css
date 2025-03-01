@@ -1,0 +1,174 @@
+/* это код я добавила/чтобы видно было товары в категории / а не баннер самой категрии */
+  /* Основной контейнер */
+  /* bread crumbs легче навигация по сайту  */
+  /* Навигация в виде кнопок */
+.breadcrumbs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.breadcrumbButton {
+  background-color: #DDDDDD;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.breadcrumbButton:hover {
+  background-color: #0056b3;
+}
+
+.breadcrumbButton:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+  /* Стиль для кнопки "Back to Categories" */
+  .backButton {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .backButton:hover {
+    color: #0056b3;
+  }
+  
+.container {
+  max-width: 1360px;;
+  height:auto;
+  margin-left: 20px;
+  margin-top: -20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Заголовок категории */
+.categoryHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Стиль для названия категории */
+.categoryTitle {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 70.4px;
+  letter-spacing: 0%;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: left; /* Выравнивание по левому краю */
+}
+
+/* Контейнер фильтров */
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: #f8f8f8;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Блок каждого фильтра */
+.filterBlock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+/* Контейнер товаров (2 ряда по 4 товара) */
+.productsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Блок одного товара */
+.productBlock {
+  width: 316px;
+  height: 422px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+}
+
+/* Sale Card Holder */
+.saleCardHolder {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #F26D22;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.discountText {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+/* Discounted Items (в один ряд с остальными) */
+.discountLabel {
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.discountCheckbox {
+  margin-left: 8px; /* Отступ слева от текста */
+}
+
+/* Изображение товара */
+.productImage {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Название товара */
+.productTitle {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Цена товара */
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.productPrice {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* .oldPrice {
+  font-size: 16px;
+  color: red;
+  text-decoration: line-through;
+} */

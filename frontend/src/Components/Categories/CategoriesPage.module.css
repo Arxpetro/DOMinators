@@ -97,6 +97,7 @@
   .example-class {
     font-size: 2rem; /* Увеличение размера шрифта */
   }
+  
  } 
  /* это для моего мака */
 @media (max-width: 90rem /* 1440px */) {
