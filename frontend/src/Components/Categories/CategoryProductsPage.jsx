@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import styles from "./CategoryProductPage.module.css"; 
 import ProductCard from "../ProductCard/ProductCard"; // Используем ProductCard для отображения товаров
-import DiscountedProductsPage from "../DiscountedProductsPage/DiscountedProductsPage"; // Используем DiscountedProductsPage
+import { DiscountedProductsPage } from "../DiscountedProductsPage/DiscountedProductsPage"; // Именованный экспорт// Используем DiscountedProductsPage
 
 const CategoryProductsPage = () => {
   const { id } = useParams();
