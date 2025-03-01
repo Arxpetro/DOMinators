@@ -39,7 +39,7 @@ const Categories = () => {
         <div className={styles.categoriesImages}>
           {categories.slice(0, 4).map((category) => ( // Отображаем только первые 4 категории
             <div key={category.id} className={styles.categoriesItem}>
-              <Link to="/categoryproducts" className={styles.categoryLink}>
+              <Link to={`/categories/${category.id}`} className={styles.categoryLink}>
                 <img
                   className={styles.imgCategory}
                   src={`http://localhost:3333/${category.image}`}

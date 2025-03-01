@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import styles from "./CategoryProductPage.module.css"; 
 import ProductCard from "../ProductCard/ProductCard"; // Используем ProductCard для отображения товаров
-import { DiscountedProductsPage } from "../DiscountedProductsPage/DiscountedProductsPage"; // Именованный экспорт// Используем DiscountedProductsPage
 
 const CategoryProductsPage = () => {
   const { id } = useParams();
@@ -29,13 +28,15 @@ const CategoryProductsPage = () => {
       })
       .catch((error) => console.error("Ошибка:", error));
   }, [id]);
+  console.log(products);
+  
  // Фильтрация по цене и скидке
  const filtered = products.filter((p) => {
   const min = priceFilter.min ? Number(priceFilter.min) : 0;
   const max = priceFilter.max ? Number(priceFilter.max) : Infinity;
   const meetsPrice = p.price >= min && p.price <= max;
-  const meetsDiscount = onlyDiscounted ? p.oldPrice > p.price : true;
-  return meetsPrice && meetsDiscount;
+  const meetsDiscount = onlyDiscounted ? p.discont_price > p.price : true;// посмотреть где взяла!! discounted prrice
+  return meetsPrice && meetsDiscount;//сделать отдельным фильтрациями
 });
 
 // Сортировка товаров
@@ -55,18 +56,20 @@ const sorted = [...filtered].sort((a, b) => {
 });
 
 return (
-  <div className={styles.container}>
-    {/* Навигация */}
-    {category?.title && (
-      <nav className={styles.breadcrumbs}>
-        <Link to="/" className={styles.breadcrumbLink}>Main Page</Link> &gt; 
-        <Link to="/categories" className={styles.breadcrumbLink}> Categories</Link> &gt; 
-        <span className={styles.currentCategory}>{category.title}</span>
-      </nav>
-    )}
+<div className={styles.container}>
+  {/* Навигация */}
+  {category?.title && (
+    <nav className={styles.breadcrumbs}>
+      <Link to="/" className={`${styles.breadcrumbButton} ${styles.lightText}`}>Main Page</Link>
+      <span className={styles.separator}></span> {/* Разделитель */}
+      <Link to="/categories" className={`${styles.breadcrumbButton} ${styles.lightText}`}>Categories</Link>
+      <span className={styles.separator}></span> {/* Разделитель */}
+      <span className={`${styles.breadcrumbButton} ${styles.darkText}`}>{category.title}</span>
+    </nav>
+  )}
 
-   {/* Заголовок категории */}
-{category && <h2 className={styles.categoryTitle}>{category.title}</h2>}
+  {/* Заголовок категории */}
+  {category && <h2 className={styles.categoryTitle}>{category.title}</h2>}
 
 
 
@@ -98,7 +101,8 @@ return (
     <input
       type="checkbox"
       checked={onlyDiscounted}
-      onChange={() => setOnlyDiscounted(!onlyDiscounted)}
+      onChange={() => setOnlyDiscounted((prev) => !prev)
+       }
       className={styles.discountCheckbox}
     />
   </label>
@@ -124,25 +128,15 @@ return (
       <div className={styles.productsContainer}>
         {sorted.length > 0 ? (
           sorted.slice(0, 8).map((product) => {
-            // Передаём в ProductCard нужные поля
-            const itemForCard = {
-              id: product.id,
-              image: product.image,
-              title: product.title,
-              price: product.oldPrice || product.price,
-              discont_price: product.oldPrice ? product.price : null,
-            };
-            return <ProductCard key={product.id} item={itemForCard} />;
+        
+            return <ProductCard key={product.id} item={product} />;
           })
         ) : (
           <p className={styles.noProducts}>No products found</p>
         )}
       </div>
-
-      {/* Подключаем DiscountedProductsPage для отображения товаров со скидкой */}
-      {onlyDiscounted && <DiscountedProductsPage products={filtered} />}
     </div>
   );
 };
 
-export default CategoryProductsPage
+export default CategoryProductsPage;
