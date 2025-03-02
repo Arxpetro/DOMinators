@@ -31,8 +31,13 @@ const CategoryProductsPage = () => {
   const filtered = products.filter((p) => {
     const min = priceFilter.min ? Number(priceFilter.min) : 0;
     const max = priceFilter.max ? Number(priceFilter.max) : Infinity;
+  
+    // Проверяем, находится ли цена в заданном диапазоне
     const meetsPrice = p.price >= min && p.price <= max;
-    const meetsDiscount = onlyDiscounted ? p.oldPrice > p.price : true;
+  
+    // Проверяем, является ли продукт со скидкой
+    const meetsDiscount = onlyDiscounted ? p.discount_price !== null && p.discount_price < p.price : true;
+  
     return meetsPrice && meetsDiscount;
   });
 

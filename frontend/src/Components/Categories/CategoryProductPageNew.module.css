@@ -167,3 +167,83 @@
   color: #333;
   font-weight: bold;
 }
+/* Для экранов шириной 1440px и меньше */
+@media (max-width: 1440px) {
+  .container {
+    margin-left: 10px; /* Уменьшаем отступы */
+  }
+
+  .categoryTitle {
+    font-size: 56px; /* Уменьшаем размер шрифта */
+  }
+
+  .productsContainer {
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+  }
+
+  .productBlock {
+    width: 280px; /* Уменьшаем ширину товара */
+  }
+}
+
+/* Для экранов шириной 768px и меньше */
+@media (max-width: 768px) {
+  .container {
+    margin-left: 5px; /* Уменьшаем отступы */
+  }
+
+  .categoryTitle {
+    font-size: 48px; /* Уменьшаем размер шрифта */
+  }
+
+  .productsContainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+  }
+
+  .productBlock {
+    width: 100%; /* Ширина 100% */
+  }
+
+  .filters {
+    flex-direction: column; /* Вертикальное расположение фильтров */
+    align-items: flex-start; /* Выравнивание по левому краю */
+  }
+}
+
+/* Для экранов шириной 480px и меньше */
+@media (max-width: 480px) {
+  .categoryTitle {
+    font-size: 36px; /* Уменьшаем размер шрифта */
+  }
+
+  .productsContainer {
+    grid-template-columns: 1fr; /* 1 колонка */
+  }
+
+  .productBlock {
+    width: 100%; /* Ширина 100% */
+  }
+
+  .filters {
+    font-size: 1rem; /* Уменьшаем размер шрифта */
+  }
+}
+
+/* Для экранов шириной 360px и меньше */
+@media (max-width: 360px) {
+  .categoryTitle {
+    font-size: 28px; /* Уменьшаем размер шрифта */
+  }
+
+  .productTitle {
+    font-size: 14px; /* Уменьшаем размер шрифта */
+  }
+
+  .productPrice {
+    font-size: 16px; /* Уменьшаем размер шрифта */
+  }
+
+  .filters {
+    font-size: 0.9rem; /* Уменьшаем размер шрифта */
+  }
+}
