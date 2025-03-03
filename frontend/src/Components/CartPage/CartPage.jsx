@@ -62,12 +62,9 @@ function CartPage() {
 	return (
 		<div>
 			<div className={s.title}>
-				<h2
-
-				>
-					Shopping cart
-				</h2>
-				<div className={s.dash}
+				<h2>Shopping cart</h2>
+				<div
+					className={s.dash}
 					style={{
 						borderTop: "1px solid #DDDDDD",
 						width: "100%",
