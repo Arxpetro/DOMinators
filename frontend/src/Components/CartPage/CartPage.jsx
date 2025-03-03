@@ -46,8 +46,8 @@ function CartPage() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (validate()) {
+			dispatch(clearCart());
 			setShowConfirmation(true);
-			dispatch(clearCart);
 			setFormData({ Name: "", Phone: "", Email: "" });
 		}
 	};
@@ -55,9 +55,6 @@ function CartPage() {
 	const handleCloseConfirmation = () => {
 		setShowConfirmation(false);
 	};
-
-	if (cart.length === 0) {
-	}
 
 	return (
 		<div>

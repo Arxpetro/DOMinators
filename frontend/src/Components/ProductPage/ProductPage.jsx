@@ -6,7 +6,7 @@ import s from "./ProductPage.module.css";
 import { useDispatch } from "react-redux";
 
 function ProductPage() {
-	const dispatch = useDispatch;
+	const dispatch = useDispatch();
 	const { id } = useParams();
 	console.log(id);
 
@@ -17,9 +17,9 @@ function ProductPage() {
 	const [quantity, setQuantity] = useState(1);
 
 	const handleAddToCard = () => {
-		// for (let index = 0; index < quantity; index++) {
+		for (let index = 0; index < quantity; index++) {
 			dispatch(addToCart(item));
-		// }
+		}
 
 		//console.log("Added to cart:", item);
 	};
