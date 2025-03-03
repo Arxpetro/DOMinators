@@ -18,16 +18,7 @@ function CardHolder({
 		<div>
 			{title !== "" && (
 				<div className={s.title}>
-					<h2
-						style={{
-							color: "#424436",
-							fontSize: "4rem",
-							fontWeight: "700",
-							marginRight: "2rem",
-						}}
-					>
-						{title}
-					</h2>
+					<h2>{title}</h2>
 					<div
 						style={{
 							borderTop: "1px solid #DDDDDD",

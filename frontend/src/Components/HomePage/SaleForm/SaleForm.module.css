@@ -1,15 +1,15 @@
 .formContainer{
     background: linear-gradient(90deg,#87933D,#55610B);
     border-radius: 1rem;
-    padding-right: 2rem;
+    /* padding-right: 2rem; */
     padding-top: 2rem;
-    margin-bottom: 80px;
+    margin-bottom: 5rem;
 }
 
 .h2{
     font-size: 4rem;
     color: white;
-    
+    margin-bottom: 2rem ;
     text-align: center;
 }
 
@@ -17,6 +17,7 @@
    
     display: flex;
     /* убираем контент влево, а не вправо */
+    
     justify-content: flex-end; 
     /*  */
     overflow: hidden;
@@ -35,7 +36,9 @@
      flex-direction: column;
      align-items: flex-end;
      justify-content: center;
-     padding-left: 1rem;
+     /* padding-left: 1rem; */
+     min-width: 17.5rem;
+     margin: 2rem;
 
 }
 
@@ -72,5 +75,28 @@
     background-color: #FFFFF1;
 }
 
+@media (max-width: 1000px) {
+    .formContainer{
+        margin: 1rem;
+       
+    }
+    .form{
+        margin: 1rem;
+    }
+}
 
+@media (max-width: 768px) {
+    .innerContainer{
+        flex-direction: column-reverse;
+        
+        /* align-items: center; */
+    }
+
+}
+@media (max-width: 480px) {
+    .h2{
+        font-size: 2.5rem;
+    }
+
+}
 

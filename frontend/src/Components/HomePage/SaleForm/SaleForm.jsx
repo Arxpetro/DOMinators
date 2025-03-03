@@ -32,7 +32,6 @@ function SaleForm() {
                      <input type="email" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}} className={s.discountInput}/>
                      <button className={s.discountButton}>Get a discount</button>
                 </form>
-                
 			</div>
 		</div>
 	);

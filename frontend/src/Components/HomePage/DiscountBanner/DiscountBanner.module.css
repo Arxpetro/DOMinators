@@ -30,6 +30,17 @@
     cursor: pointer;
 }
 
+@media(max-width: 768px){
+    .h1{
+        font-size: 4rem;
+    }
+}
+
+@media(max-width: 480px){
+    .h1{
+        font-size: 3.125rem;
+    }
+}
 
 
 

@@ -1,8 +1,9 @@
 .h2{
     color: #424436;
-    font-size: "4rem";
-    font-weight: "700";
-    margin-right: "2rem";
+    font-size: 4rem;
+    font-weight: 700;
+    margin-right: 2rem;
+    margin-left: 2.5rem;
 }
 
 .filterBox{
@@ -52,7 +53,19 @@ input[type="checkbox"] {
 
 }
 
-
+@media(max-width: 768px){
+    .filterBox{
+        display:flex;
+        flex-direction: column;
+        gap: 1rem;;
+        align-items: baseline;
+        margin: 1rem;
+    }
+    .h2{
+        margin: 1rem;
+        font-size: 3rem;
+    }
+}
 
 
 

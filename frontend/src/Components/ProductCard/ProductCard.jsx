@@ -1,12 +1,22 @@
 import React from "react";
 import s from "./ProductCard.module.css";
+import { addToCart } from "../../Slices/cartSlice";
+import { useDispatch } from "react-redux";
 
 function ProductCard({ item: product }) {
 	//console.log("Получен product в ProductCard:", product);
+	const dispatch = useDispatch();
 
 	if (!product || typeof product !== "object") {
 	  return <p>Ошибка загрузки товара</p>;
 	}
+
+	const handleAddToCard = () => {
+		dispatch(addToCart(product));
+		console.log('Added to cart:', product);
+		
+	}
+	
 
 	return (
 		<div className={s.container}>
@@ -14,6 +24,7 @@ function ProductCard({ item: product }) {
 			<div
 				style={{
 					backgroundImage: `url(http://localhost:3333${product.image})`,
+					position: 'relative',
 				}}
 				className={s.productImg}
 			>
@@ -27,6 +38,7 @@ function ProductCard({ item: product }) {
 							"%"}
 					</div>
 				)}
+				<button className={s.addToCart} onClick={handleAddToCard}>Add to cart</button>
 			</div>
 
 			{/* Нижняя часть карточки с названием и ценой */}

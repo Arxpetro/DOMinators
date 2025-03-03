@@ -4,6 +4,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import HomePage from "./Components/HomePage/HomePage";
 import AllProductsPage from "./Components/AllProductsPage/AllProductsPage";
+
+import CartPage from "./Components/CartPage/CartPage";
+
 import CategoriesPage from "./Components/Categories/CategoriesPage";
 import CategoryProductsPage from "./Components/Categories/CategoryProductsPage";
 import NotFoundPage from "./Components/NotFoundPage/NotFoundPage";
@@ -21,6 +24,8 @@ function App() {
 						<Route path="/sales"  element={<AllProductsPage key='sales' title='Discounted items' discounted={true}/>} />
 						<Route path="/categories" element={<CategoriesPage />} />
             <Route path="/categories/:id" element={<CategoryProductsPage />} />
+            <Route path="/cart" element={<CartPage />} />
+              
             <Route path="*" element={<NotFoundPage />} />
 					</Routes>
 					{/* Footer */}
