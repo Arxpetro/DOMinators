@@ -24,6 +24,7 @@ function App() {
 						{/* add changes to sergey's component */}
             			<Route path="/categories/:id" element={<CategoryProductsPage />} /> 
             			<Route path="/products/:id" element={<ProductPage />} />
+            			{/* <Route path="/products/:id" element={<div></div>} /> */}
 
 						<Route path="*" element={<NotFoundPage />} />
 					</Routes>

@@ -1,9 +1,14 @@
 import React from "react";
 import s from "./ProductCard.module.css";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard({ item: product }) {
-	//console.log("Получен product в ProductCard:", product);
-
+	console.log("Получен product в ProductCard:", product);
+	const navigate = useNavigate();
+	const goToProductPage = () => { 
+	 navigate(`/product/${product.id}`)
+	
+	};
 	if (!product || typeof product !== "object") {
 	  return <p>Ошибка загрузки товара</p>;
 	}
@@ -31,7 +36,7 @@ function ProductCard({ item: product }) {
 
 			{/* Нижняя часть карточки с названием и ценой */}
 			<div className={s.productInfo}>
-				<h4
+			<h4 onClick={goToProductPage}
 					style={{
 						
 						whiteSpace: "nowrap" /* Запрещает перенос текста */,
