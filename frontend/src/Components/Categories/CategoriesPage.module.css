@@ -10,7 +10,15 @@
   line-height: 4.375rem; /* 70px */  
   color: #424436;  
   margin-bottom: 2.5rem; /* 40px */  
-}  
+}
+
+/* Сетка товаров */
+.productsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem; /* ~32px между карточками */
+  justify-content: center;
+}
 
 .categoriesRow {  
   display: grid;
