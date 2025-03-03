@@ -1,13 +1,13 @@
 .productPage {
   width: 1360px; /* Ширина компонента */
-  height: auto; /* Автоматическая высота */
-  margin: auto; /* Центрируем компонент */
+  height: 574px; /* Автоматическая высота */
+  margin-top:auto;
   border: 1px solid #ccc; /* Серый разделитель для границы */
   border-radius: 8px; /* Закругленные углы */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Эффект тени */
   background-color: #fff; /* Цвет фона */
   position: relative; /* Контекст позиционирования для абсолютных дочерних элементов */
-  top: 244px; /* Установка верхней позиции */
+  top: 4px; /* Установка верхней позиции */
   left: 40px; /* Установка левой позиции */
   display: flex; /* Используем flexbox для компоновки */
   flex-direction: column; /* Располагаем дочерние элементы вертикально */
@@ -52,6 +52,23 @@
   border: none; /* Без рамки */
   border-radius: 5px; /* Закругленные углы для кнопок */
   cursor: pointer; /* Указатель курсора при наведении */
+  .priceContainer {
+    display: flex;
+    align-items: center; /* Центрируем элементы по вертикали */
+    gap: 16px; /* Отступ между элементами */
+  }
+  
+  .currentPrice {
+    color: #424436; /* Цвет новой цены */
+    font-size: 24px; /* Размер шрифта для новой цены */
+    font-weight: bold; /* Жирный шрифт для новой цены */
+  }
+  
+  .oldPrice {
+    color: #8B8B8B; /* Цвет старой цены */
+    text-decoration: line-through; /* Перечеркивание старой цены */
+    font-size: 20px; /* Размер шрифта для старой цены */
+  }
 }
 
 .productPage button:hover {

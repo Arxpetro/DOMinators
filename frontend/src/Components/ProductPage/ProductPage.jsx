@@ -69,6 +69,74 @@
 
 
 
+// import React, { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom"; // Для получения параметров URL
+// import axios from "axios"; // Для выполнения HTTP-запросов
+// import styles from "./ProductPage.module.css"; // Импортируем стили
+
+// function ProductPage() {
+//   const { id } = useParams(); // Получаем ID продукта из URL
+//   const [product, setProduct] = useState(null); // Состояние для хранения данных о продукте
+//   const [loading, setLoading] = useState(true); // Состояние для управления загрузкой
+//   const [error, setError] = useState(null); // Состояние для управления ошибками
+//   const [quantity, increaseQuantity,decreaseQuantity] = useState(1); // Состояние для хранения количества товара
+
+
+//   useEffect(() => {
+//     const fetchProduct = async () => {
+//       try {
+//         const response = await axios.get(`http://localhost:3333/products/${id}`);
+//         if (response.data) {
+//           setProduct(response.data);
+//         } else {
+//           setError("Product not found");
+//         }
+//       } catch (err) {
+//         console.error("Error fetching product:", err);
+//         setError("Failed to load product");
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchProduct();
+//   }, [id]);
+
+//   const handleAddToCart = () => {
+//     if (product) {
+//       console.log("Product added to cart:", product);
+//     }
+//   };
+
+//   if (loading) return <div>Loading...</div>;
+//   if (error) return <div>Error: {error}</div>;
+//   if (!product) return <div>Product not found</div>;
+
+//   return (
+//     <div className={styles.productPage}>
+//       <h1>{product.title}</h1>
+//       <img
+//         src={`http://localhost:3333${product.image}`}
+//         alt={product.title}
+//         className={styles.image}
+//       />
+//       <p>{product.description}</p>
+//       <h2>Price: {product.price} $</h2>
+//       {product.price && <h3 className={styles.discont_price}>Old Price: {product.price} $</h3>}
+//       <div className={styles.quantityContainer}>
+//             <button onClick={decreaseQuantity} className={styles.quantityButton}>-</button>
+//             <span className={styles.quantity}>{quantity}</span>
+//             <button onClick={increaseQuantity} className={styles.quantityButton}>+</button>
+//             <button onClick={handleAddToCart} className={styles.addToCartButton}>
+//               Add to Cart
+//             </button>
+//           </div>
+//     </div>
+//   );
+// }
+
+// export default ProductPage;
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // Для получения параметров URL
 import axios from "axios"; // Для выполнения HTTP-запросов
@@ -79,6 +147,7 @@ function ProductPage() {
   const [product, setProduct] = useState(null); // Состояние для хранения данных о продукте
   const [loading, setLoading] = useState(true); // Состояние для управления загрузкой
   const [error, setError] = useState(null); // Состояние для управления ошибками
+  const [quantity, setQuantity] = useState(1); // Состояние для хранения количества товара
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -102,8 +171,17 @@ function ProductPage() {
 
   const handleAddToCart = () => {
     if (product) {
-      console.log("Product added to cart:", product);
+      console.log(`Added ${quantity} of ${product.title} to cart.`);
+      // Здесь можно добавить логику для добавления товара в корзину
     }
+  };
+
+  const increaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const decreaseQuantity = () => {
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1)); // Не даем уменьшить количество ниже 1
   };
 
   if (loading) return <div>Loading...</div>;
@@ -119,16 +197,22 @@ function ProductPage() {
         className={styles.image}
       />
       <p>{product.description}</p>
+      
       <h2>Price: {product.price} $</h2>
-      {product.price && <h3 className={styles.discont_price}>Old Price: {product.price} $</h3>}
-      <button onClick={handleAddToCart} className={styles.addToCartButton}>
-        Add to Cart
-      </button>
+      {product.discont_price && (
+        <h3 className={styles.discont_price}>Old Price: {product.discont_price} $</h3>
+      )}
+      <div className={styles.quantityContainer}>
+        <button onClick={decreaseQuantity} className={styles.quantityButton}>-</button>
+        <span className={styles.quantity}>{quantity}</span>
+        <button onClick={increaseQuantity} className={styles.quantityButton}>+</button>
+        <button onClick={handleAddToCart} className={styles.addToCartButton}>
+          Add to Cart
+        </button>
+      </div>
     </div>
   );
 }
 
 export default ProductPage;
-
-
 
