@@ -6,7 +6,7 @@ function ProductCard({ item: product }) {
 	console.log("Получен product в ProductCard:", product);
 	const navigate = useNavigate();
 	const goToProductPage = () => { 
-	 navigate(`/product/${product.id}`)
+	 navigate(`/products/${product.id}`)
 	
 	};
 	if (!product || typeof product !== "object") {

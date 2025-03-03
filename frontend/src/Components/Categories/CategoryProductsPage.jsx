@@ -183,14 +183,47 @@ const CategoryProductsPage = () => {
   }, [id]);
   console.log(products);
   
- // Фильтрация по цене и скидке
- const filtered = products.filter((p) => {
+ // Функция для фильтрации по цене
+const filterByPrice = (product, min, max) => {
+  return product.price >= min && product.price <= max;
+};
+
+// Функция для фильтрации по скидке
+const filterByDiscount = (product, onlyDiscounted) => {
+  return onlyDiscounted ? product.discont_price > product.price : true;
+};
+
+// Функция для фильтрации по цене
+// const filterByPrice = (product, min, max) => {
+//   return product.price >= min && product.price <= max;
+// };
+
+// Функция для фильтрации по скидке
+// const filterByDiscount = (product, onlyDiscounted) => {
+//   return onlyDiscounted ? product.discont_price > product.price : true;
+// };
+
+// Основная функция фильтрации
+const filterProducts = (products, priceFilter, onlyDiscounted) => {
   const min = priceFilter.min ? Number(priceFilter.min) : 0;
   const max = priceFilter.max ? Number(priceFilter.max) : Infinity;
-  const meetsPrice = p.price >= min && p.price <= max;
-  const meetsDiscount = onlyDiscounted ? p.discont_price > p.price : true;// посмотреть где взяла!! discounted prrice
-  return meetsPrice && meetsDiscount;//сделать отдельным фильтрациями
-});
+
+  return products.filter((product) => {
+    const meetsPrice = filterByPrice(product, min, max);
+    const meetsDiscount = filterByDiscount(product, onlyDiscounted);
+    
+    // Отладочные сообщения
+    console.log(`Product ID: ${product.id}, Price: ${product.price}, Discount Price: ${product.discont_price}`);
+    console.log(`Meets Price: ${meetsPrice}, Meets Discount: ${meetsDiscount}`);
+    
+    return meetsPrice && meetsDiscount;
+  });
+};
+
+
+const filtered = filterProducts(products, priceFilter, onlyDiscounted);
+
+console.log(filtered);
 
 // Сортировка товаров
 const sorted = [...filtered].sort((a, b) => {
