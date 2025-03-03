@@ -32,8 +32,8 @@
 }
 
 .allCategoriesButton {
-  font-size: 18px; /* Размер шрифта для кнопки "All Categories" */
-  color: lightgray; /* Цвет текста кнопки */
+  font-size: 16px; /* Размер шрифта для кнопки "All Categories" */
+  color:#DDDDDD; /* Цвет текста кнопки */
   text-decoration: none; /* Убираем подчеркивание */
   margin-left: 10px; /* Отступ слева от кнопки */
   align-self: center; /* Центрируем кнопку по вертикали */
