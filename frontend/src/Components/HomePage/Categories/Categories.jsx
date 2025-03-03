@@ -92,7 +92,7 @@ const Categories = () => {
         <div className={styles.categoriesHeader}>
           <h1 className={styles.categoriesTitle}>Categories</h1>
           <div className={styles.separatorLine}></div> {/* Линия */}
-          <Link to="/categories/all" className={styles.allCategoriesButton}>All Categories</Link> {/* Кнопка "All Categories" */}
+          <Link to="/categories" className={styles.allCategoriesButton}>All Categories</Link> {/* Кнопка "All Categories" */}
         </div>
        
         <div className={styles.categoriesImages}>
