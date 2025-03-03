@@ -67,8 +67,6 @@
 
 // export default observer(ProductPage); // mobX позволяет избежать ненужных рендеров и улучшает общую производительность приложения
 
-
-
 // import React, { useEffect, useState } from "react";
 // import { useParams } from "react-router-dom"; // Для получения параметров URL
 // import axios from "axios"; // Для выполнения HTTP-запросов
@@ -80,7 +78,6 @@
 //   const [loading, setLoading] = useState(true); // Состояние для управления загрузкой
 //   const [error, setError] = useState(null); // Состояние для управления ошибками
 //   const [quantity, increaseQuantity,decreaseQuantity] = useState(1); // Состояние для хранения количества товара
-
 
 //   useEffect(() => {
 //     const fetchProduct = async () => {
@@ -136,7 +133,6 @@
 // }
 
 // export default ProductPage;
-
 
 // cамый нормальный код из всех!!!!!!
 // import React, { useEffect, useState } from "react";
@@ -199,7 +195,7 @@
 //         className={styles.image}
 //       />
 //       <p>{product.description}</p>
-      
+
 //       <h2>Price: {product.price} $</h2>
 //       {product.discont_price && (
 //         <h3 className={styles.discont_price}>Old Price: {product.discont_price} $</h3>
@@ -218,12 +214,10 @@
 
 // export default ProductPage;
 
-
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // Для получения параметров URL
 import axios from "axios"; // Для выполнения HTTP-запросов
 import styles from "./ProductPage.module.css"; // Импортируем стили
-
 
 function ProductPage() {
   const { id } = useParams(); // Получаем ID продукта из URL
@@ -235,7 +229,9 @@ function ProductPage() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:3333/products/${id}`);
+        const response = await axios.get(
+          `http://localhost:3333/products/${id}`
+        );
         if (response.data) {
           setProduct(response.data);
         } else {
@@ -274,23 +270,29 @@ function ProductPage() {
     <div className={styles.productPage}>
       <div className={styles.infoContainer}>
         <h1>{product.title}</h1>
-        <img
-          src={`http://localhost:3333${product.image}`}
-          alt={product.title}
-          className={styles.image}
-        />
+        {/* <div
+          style={{
+            backgroundImage: `url(http://localhost:3333${product.image})`,
+            width: "780px",
+            height: "600px",
+          }}
+        ></div> */}
         <p>{product.description}</p>
         <h2>Price: {product.price} $</h2>
-             {product.discont_price && (
-       // eslint-disable-next-line jsx-a11y/heading-has-content
-       <h3  className={product.discont_price} oldPrice={product.price} />
-             )}
+        {product.discont_price && (
+         
+     <h3 className={product.discont_price} oldPrice={product.price} />
+        )}
       </div>
       <div className={styles.controlsContainer}>
         <div className={styles.quantityContainer}>
-          <button onClick={decreaseQuantity} className={styles.quantityButton}>-</button>
+          <button onClick={decreaseQuantity} className={styles.quantityButton}>
+            -
+          </button>
           <span className={styles.quantity}>{quantity}</span>
-          <button onClick={increaseQuantity} className={styles.quantityButton}>+</button>
+          <button onClick={increaseQuantity} className={styles.quantityButton}>
+            +
+          </button>
         </div>
         <button onClick={handleAddToCart} className={styles.addToCartButton}>
           Add to Cart
