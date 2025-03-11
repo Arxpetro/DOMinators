@@ -281,14 +281,13 @@ return (
         />
       </div>
       {/* Фильтр "Discounted Items" теперь после заголовка категории */}
-<div className={styles.discountFilter}>
+      <div className={styles.discountFilter}>
   <label>
     Discounted Items
     <input
       type="checkbox"
       checked={onlyDiscounted}
-      onChange={() => setOnlyDiscounted((prev) => !prev)
-       }
+      onChange={() => setOnlyDiscounted((prev) => !prev)}
       className={styles.discountCheckbox}
     />
   </label>
@@ -312,15 +311,14 @@ return (
 
       {/* Контейнер товаров (2 ряда по 4 товара) */}
       <div className={styles.productsContainer}>
-        {sorted.length > 0 ? (
-          sorted.slice(0, 8).map((product) => {
-        
-            return <ProductCard key={product.id} item={product} />;
-          })
-        ) : (
-          <p className={styles.noProducts}>No products found</p>
-        )}
-      </div>
+  {sorted.length > 0 ? (
+    sorted.slice(0, 8).map((product) => {
+      return <ProductCard key={product.id} item={product} />;
+    })
+  ) : (
+    <p className={styles.noProducts}>No products found</p>
+  )}
+</div>
     </div>
   );
 };

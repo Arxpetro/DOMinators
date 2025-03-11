@@ -35,11 +35,12 @@
   border-color: #424436; /* Цвет рамки при наведении */
 }
 
-.separator {
-  width: 20px; /* Ширина линии */
-  height: 1px; /* Высота линии */
-  background-color: #DDDDDD; /* Цвет линии */
-  margin: 0; /* Убираем отступы */
+.separatorLine {
+  flex-grow: 1; /* Позволяет линии занимать оставшееся пространство */
+  height: 2px; /* Высота линии */
+  background-color: lightgray; /* Цвет линии */
+  margin-left: 20px; /* Отступ слева от заголовка */
+  margin-right: 10px; /* Отступ справа от линии */
 }
   
 .container {
@@ -61,15 +62,11 @@
 }
 
 /* Стиль для названия категории */
-.categoryTitle {
-  font-family: Montserrat, sans-serif;
-  font-weight: 700;
+.categoriesTitle {
+  font-weight: 700; /* Changed from 400 to 700 to make the "Categories" title bold */
   font-size: 64px;
-  line-height: 70.4px;
-  letter-spacing: 0%;
-  color: #333;
-  margin-bottom: 10px;
-  text-align: left; /* Выравнивание по левому краю */
+  margin: 0;
+  color: dark;
 }
 
 /* Контейнер фильтров */
