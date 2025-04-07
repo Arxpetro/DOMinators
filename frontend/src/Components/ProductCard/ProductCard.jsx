@@ -1,17 +1,19 @@
 import React from "react";
 import s from "./ProductCard.module.css";
-import { useNavigate } from "react-router-dom";
 
 function ProductCard({ item: product }) {
-	console.log("Получен product в ProductCard:", product);
-	const navigate = useNavigate();
-	const goToProductPage = () => { 
-	 navigate(`/products/${product.id}`)
-	
-	};
+	//console.log("Получен product в ProductCard:", product);
+
 	if (!product || typeof product !== "object") {
 	  return <p>Ошибка загрузки товара</p>;
 	}
+
+	const handleAddToCard = () => {
+		dispatch(addToCart(product));
+		console.log('Added to cart:', product);
+		
+	}
+	
 
 	return (
 		<div className={s.container}>
@@ -19,6 +21,7 @@ function ProductCard({ item: product }) {
 			<div
 				style={{
 					backgroundImage: `url(http://localhost:3333${product.image})`,
+					position: 'relative',
 				}}
 				className={s.productImg}
 			>
@@ -32,11 +35,12 @@ function ProductCard({ item: product }) {
 							"%"}
 					</div>
 				)}
+				<button className={s.addToCart} onClick={handleAddToCard}>Add to cart</button>
 			</div>
 
 			{/* Нижняя часть карточки с названием и ценой */}
 			<div className={s.productInfo}>
-			<h4 onClick={goToProductPage}
+				<h4
 					style={{
 						
 						whiteSpace: "nowrap" /* Запрещает перенос текста */,

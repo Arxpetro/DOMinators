@@ -35,15 +35,21 @@ function SaleCardHolder() {
 	if (error) return <p>Ошибка: {error}</p>;
 	// console.log(items);
 
-    const saleItems = items.filter((item)=> item.discont_price !== null);
+	const saleItems = items.filter((item) => item.discont_price !== null);
 
-    const getRandomElements = (arr, count) => {
-        return arr.sort(() => Math.random() - 0.5).slice(0, count);
-      };
+	const getRandomElements = (arr, count) => {
+		return arr.sort(() => Math.random() - 0.5).slice(0, count);
+	};
 
-      
-
-	return <CardHolder title="Sale" Card={ProductCard} buttonTitle="All sales" items={getRandomElements(saleItems, 4)} nav="/sales"/>;
+	return (
+		<CardHolder
+			title="Sale"
+			Card={ProductCard}
+			buttonTitle="All sales"
+			items={getRandomElements(saleItems, 4)}
+			nav="/sales"
+		/>
+	);
 }
 
 export default SaleCardHolder;

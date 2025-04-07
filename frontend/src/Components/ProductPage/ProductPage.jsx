@@ -58,7 +58,7 @@ function ProductPage() {
 		};
 
 		fetchItems();
-	}, []);
+	}, [id]);
 
 	if (loading) return <p>Загрузка товаров...</p>;
 	if (error) return <p>Ошибка: {error}</p>;

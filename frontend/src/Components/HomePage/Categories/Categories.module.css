@@ -21,7 +21,8 @@
   font-weight: 700; /* Changed from 400 to 700 to make the "Categories" title bold */
   font-size: 64px;
   margin: 0;
-  color: dark;
+ 
+  color: #424436;
 }
 
 .separatorLine {

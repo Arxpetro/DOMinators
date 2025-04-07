@@ -97,17 +97,7 @@ function AllProductsPage({ title = "", discounted = false }) {
 
 	return (
 		<div>
-			<h2
-				style={{
-					color: "#424436",
-					fontSize: "4rem",
-					fontWeight: "700",
-					marginRight: "2rem",
-					marginLeft: "2.5rem",
-				}}
-			>
-				{title}
-			</h2>
+			<h2 className={s.h2}>{title}</h2>
 			<div className={s.filterBox}>
 				<div className={s.price}>
 					Price
